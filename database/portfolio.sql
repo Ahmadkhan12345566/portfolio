@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 26, 2020 at 10:01 AM
--- Server version: 5.7.30-cll-lve
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 23, 2020 at 08:58 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `demongsp_construction`
+-- Database: `portfolio`
 --
 
 -- --------------------------------------------------------
@@ -28,8 +28,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `jobs`
 --
 
-CREATE TABLE `jobs` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `jobs`;
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `responsibilities` text NOT NULL,
   `skills` text NOT NULL,
@@ -39,8 +40,9 @@ CREATE TABLE `jobs` (
   `qualification` tinytext NOT NULL,
   `experience` tinytext NOT NULL,
   `age` tinytext NOT NULL,
-  `gender` tinytext NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `gender` tinytext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jobs`
@@ -57,14 +59,16 @@ INSERT INTO `jobs` (`id`, `title`, `responsibilities`, `skills`, `meta_title`, `
 -- Table structure for table `savejobs`
 --
 
-CREATE TABLE `savejobs` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `savejobs`;
+CREATE TABLE IF NOT EXISTS `savejobs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(100) NOT NULL,
-  `file` varchar(250) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `file` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `savejobs`
@@ -81,11 +85,13 @@ INSERT INTO `savejobs` (`id`, `firstname`, `lastname`, `email`, `phone`, `file`)
 -- Table structure for table `tbl_comment`
 --
 
-CREATE TABLE `tbl_comment` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_comment`;
+CREATE TABLE IF NOT EXISTS `tbl_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `code_body` text NOT NULL,
-  `code_main` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `code_main` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_comment`
@@ -100,10 +106,12 @@ INSERT INTO `tbl_comment` (`id`, `code_body`, `code_main`) VALUES
 -- Table structure for table `tbl_designation`
 --
 
-CREATE TABLE `tbl_designation` (
-  `designation_id` int(11) NOT NULL,
-  `designation_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `tbl_designation`;
+CREATE TABLE IF NOT EXISTS `tbl_designation` (
+  `designation_id` int(11) NOT NULL AUTO_INCREMENT,
+  `designation_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`designation_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_designation`
@@ -122,12 +130,14 @@ INSERT INTO `tbl_designation` (`designation_id`, `designation_name`) VALUES
 -- Table structure for table `tbl_faq`
 --
 
-CREATE TABLE `tbl_faq` (
-  `faq_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_faq`;
+CREATE TABLE IF NOT EXISTS `tbl_faq` (
+  `faq_id` int(11) NOT NULL AUTO_INCREMENT,
   `faq_title` varchar(255) NOT NULL,
   `faq_content` text NOT NULL,
-  `faq_show` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `faq_show` varchar(50) NOT NULL,
+  PRIMARY KEY (`faq_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_faq`
@@ -148,10 +158,12 @@ INSERT INTO `tbl_faq` (`faq_id`, `faq_title`, `faq_content`, `faq_show`) VALUES
 -- Table structure for table `tbl_faq_photo`
 --
 
-CREATE TABLE `tbl_faq_photo` (
-  `id` int(11) NOT NULL,
-  `main_photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `tbl_faq_photo`;
+CREATE TABLE IF NOT EXISTS `tbl_faq_photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `main_photo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_faq_photo`
@@ -166,11 +178,13 @@ INSERT INTO `tbl_faq_photo` (`id`, `main_photo`) VALUES
 -- Table structure for table `tbl_language`
 --
 
-CREATE TABLE `tbl_language` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_language`;
+CREATE TABLE IF NOT EXISTS `tbl_language` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `value` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_language`
@@ -238,8 +252,9 @@ INSERT INTO `tbl_language` (`id`, `name`, `value`) VALUES
 -- Table structure for table `tbl_news`
 --
 
-CREATE TABLE `tbl_news` (
-  `news_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_news`;
+CREATE TABLE IF NOT EXISTS `tbl_news` (
+  `news_id` int(11) NOT NULL AUTO_INCREMENT,
   `news_title` varchar(255) NOT NULL,
   `news_content` text NOT NULL,
   `news_short_content` text NOT NULL,
@@ -251,8 +266,9 @@ CREATE TABLE `tbl_news` (
   `comment` varchar(10) NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_keyword` text NOT NULL,
-  `meta_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `meta_description` text NOT NULL,
+  PRIMARY KEY (`news_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_news`
@@ -269,13 +285,15 @@ INSERT INTO `tbl_news` (`news_id`, `news_title`, `news_content`, `news_short_con
 -- Table structure for table `tbl_news_category`
 --
 
-CREATE TABLE `tbl_news_category` (
-  `category_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_news_category`;
+CREATE TABLE IF NOT EXISTS `tbl_news_category` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_keyword` text NOT NULL,
-  `meta_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `meta_description` text NOT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_news_category`
@@ -295,8 +313,9 @@ INSERT INTO `tbl_news_category` (`category_id`, `category_name`, `meta_title`, `
 -- Table structure for table `tbl_page`
 --
 
-CREATE TABLE `tbl_page` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_page`;
+CREATE TABLE IF NOT EXISTS `tbl_page` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mt_home` varchar(255) NOT NULL,
   `mk_home` text NOT NULL,
   `md_home` text NOT NULL,
@@ -351,8 +370,9 @@ CREATE TABLE `tbl_page` (
   `privacy_content` text NOT NULL,
   `mt_privacy` varchar(255) NOT NULL,
   `mk_privacy` text NOT NULL,
-  `md_privacy` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `md_privacy` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_page`
@@ -367,24 +387,21 @@ INSERT INTO `tbl_page` (`id`, `mt_home`, `mk_home`, `md_home`, `about_photo`, `a
 -- Table structure for table `tbl_partner`
 --
 
-CREATE TABLE `tbl_partner` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_partner`;
+CREATE TABLE IF NOT EXISTS `tbl_partner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `photo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_partner`
 --
 
 INSERT INTO `tbl_partner` (`id`, `name`, `photo`) VALUES
-(1, 'Partner Company', 'partner-1.png'),
-(2, 'Partner Company', 'partner-2.png'),
-(3, 'Partner Company', 'partner-3.png'),
-(4, 'Partner Company', 'partner-4.png'),
-(5, 'Partner Company', 'partner-5.png'),
-(6, 'Partner Company', 'partner-6.png'),
-(7, 'Partner Company', 'partner-7.png');
+(8, 'test', 'partner-8.jpg'),
+(9, 'test 2', 'partner-9.png');
 
 -- --------------------------------------------------------
 
@@ -392,12 +409,14 @@ INSERT INTO `tbl_partner` (`id`, `name`, `photo`) VALUES
 -- Table structure for table `tbl_photo`
 --
 
-CREATE TABLE `tbl_photo` (
-  `photo_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_photo`;
+CREATE TABLE IF NOT EXISTS `tbl_photo` (
+  `photo_id` int(11) NOT NULL AUTO_INCREMENT,
   `photo_caption` varchar(255) NOT NULL,
   `photo_name` varchar(255) NOT NULL,
-  `photo_show_home` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `photo_show_home` varchar(10) NOT NULL,
+  PRIMARY KEY (`photo_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_photo`
@@ -419,8 +438,9 @@ INSERT INTO `tbl_photo` (`photo_id`, `photo_caption`, `photo_name`, `photo_show_
 -- Table structure for table `tbl_portfolio`
 --
 
-CREATE TABLE `tbl_portfolio` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_portfolio`;
+CREATE TABLE IF NOT EXISTS `tbl_portfolio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `short_content` text NOT NULL,
   `content` text NOT NULL,
@@ -436,17 +456,17 @@ CREATE TABLE `tbl_portfolio` (
   `banner` varchar(255) NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_keyword` text NOT NULL,
-  `meta_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `meta_description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_portfolio`
 --
 
 INSERT INTO `tbl_portfolio` (`id`, `name`, `short_content`, `content`, `client_name`, `client_company`, `start_date`, `end_date`, `website`, `cost`, `client_comment`, `category_id`, `photo`, `banner`, `meta_title`, `meta_keyword`, `meta_description`) VALUES
-(7, 'Residential Construction', 'We  Smart Construction Company. has commenced the structural remodeling and renovation work of Residential house in D-17', '<p><span style=\"color: rgb(102, 102, 102); font-family: &quot;Open Sans&quot;, HelveticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 15px;\">We&nbsp; Smart Construction Company. has commenced the structural remodeling and renovation work of Residential house in D-17 on 5</span><sup style=\"margin: 0px; padding: 0px; border: 0px rgb(225, 225, 225); font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: smaller; line-height: inherit; font-family: &quot;Open Sans&quot;, HelveticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; color: rgb(102, 102, 102);\">th</sup><font color=\"#666666\" face=\"Open Sans, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif\"><span style=\"font-size: 15px;\">&nbsp;July 2017. the scope of work includes the civil works, structure reinforcement, mordernizing of elevation, replacement of complete MEP works and interior renovation. We struggle to achieve the mark what the client is looking for. The project is now near to completion.</span></font><br></p>', 'Waseem Hassan', '', '2017-07-01', '2018-12-22', '', '16,903,040/- Pak Rupees.', 'We are very pleased and proud of our new home from the design to the quality of the workmanship.  The masonry work, the interior trim work and the custom cabinets surpasses anything I have ever seen in any home.  I would highly recommend Smart Construction and Design for anyone considering building a new home.', '1', 'portfolio-7.jpg', 'portfolio-banner-7.jpg', 'Residential Construction', '', ''),
-(8, 'Smart Villas Phase I', 'A residential community adjacent to sector D-17 Islamabad, providing high quality standard of living at very economical price.', '<p><span style=\"color: rgb(28, 30, 33); font-family: Helvetica, Arial, sans-serif; font-size: 14px;\">Phase 1 is thrilled to announce the construction of commercial buildings. These commercial constructions will commence on 1st March 2019 in D17, Islamabad. Development of this phase has already been completed. Just quick facts: 15 residential houses have already been built. 5 to 7 houses currently under construction.</span><br style=\"color: rgb(28, 30, 33); font-family: Helvetica, Arial, sans-serif; font-size: 14px;\"><span style=\"color: rgb(28, 30, 33); font-family: Helvetica, Arial, sans-serif; font-size: 14px;\">This building offers of variety of spaces, with lower ground and ground floor dedicated to spacious commercial shops, 1st floor caters for offices and other&nbsp;</span><span class=\"text_exposed_show\" style=\"display: inline; font-family: Helvetica, Arial, sans-serif; color: rgb(28, 30, 33); font-size: 14px;\">commercial/business purposes . The 2nd and 3rd floors are primarily dedicated to residential apartments and flats to give you living experience that is easily accessible to shops and stores in the building.<br>There is separate excess to all 3 parts of the building to ensure privacy, security and independence.<br>Call now and book your space for a deal, that is a limited time offer. With increasing demand and the continuation of construction the current prices will be revised soon.<br>Don’t miss out on this wonderful deal as it value for money and is one of the fastest upcoming society of Islamabad.</span></p><p>A residential community adjacent to sector D-17 Islamabad, providing high quality standard of living at very economical price.&nbsp;</p><p>Project include</p><p>Margala view residential plots and technologically advance villas.</p>', 'Imran Marwat', 'Smart Group Of Companies ', '2016-03-05', '2019-07-31', 'https://www.smartvillas.com', '', 'Our new lake home has just been completed and we could not be happier with the entire experience and the final product.  Smart Construction and his team have exceeded our expectations.  We were impressed with the regular updates and pictures regarding the progress of the home since we live about four hours away. ', '1', 'portfolio-8.jpg', 'portfolio-banner-8.jpg', 'Smart Villas Phase I', '', ''),
-(9, 'Smart Construction Phase II', 'Its great pleasure & pride that gas supply to our projects  has been approved today by the Finance, Revenue & Economic Affairs Minister, Asad Umar.', '<p style=\"margin-bottom: 6px; font-family: Helvetica, Arial, sans-serif; color: rgb(28, 30, 33); font-size: 14px;\">It is with great pleasure and pride that gas supply to our both projects ( Phase II &amp; Phase III ) has been approved today by the Finance, Revenue and Economic Affairs Minister, Asad Umar.<br>We owe this to the efforts of Vicky Khan, that we were able to warmly welcome Mr. Asad Umar at Vicky Khan’s farmhouse in D-17 where a complete plan was discussed and drawn over tea and refreshments.</p><p style=\"margin-top: 6px; margin-bottom: 6px; font-family: Helvetica, Arial, sans-serif; color: rgb(28, 30, 33); font-size: 14px;\">It is with great enthusiasm that we deliver our promises to our customers on a<span class=\"text_exposed_show\" style=\"display: inline; font-family: inherit;\">&nbsp;daily basis, and today is yet again just another example of a milestone that we have achieved. Amongst other achievements and the approval of gas supply, we are also happy to announce that work on the entry road that leads to the properties in D-17 is almost completed; and other development is following along smart Villas promises to fulfill all its commitments and make sure that our customers are not only satisfied by the deals they make with us, but also return happy and excited about prospect of such great investments with us.</span></p><div class=\"text_exposed_show\" style=\"display: inline; font-family: Helvetica, Arial, sans-serif; color: rgb(28, 30, 33); font-size: 14px;\"><p style=\"margin-bottom: 6px; font-family: inherit;\">Whether you are looking to expand your ownership of land, investment, office space or whether you are looking into buying plots, property or building villas/houses - please reach out to us and we will be more than happy to assist you.</p></div>', 'Imran Marwat', 'Smart Group Of Companies', '2018-08-01', '', '', '', 'We have had three previous new homes built and this was by far our best experience for the following reasons:  The workmanship and the quality were completed at the highest level.  Smart Construction and his entire team, including the subcontractors had one focus and that was for everything to be completed to our satisfaction.  In addition,  Smart Construction\'s follow-up and attention to detail was excellent and he made several good suggestions on items we had not considered.', '2', 'portfolio-9.jpg', 'portfolio-banner-9.jpg', 'Smart Villas Phase 11', '', '');
+(7, 'Tabero', 'Discover an amazing community, new friends, and a great way to dine.', '<p><span style=\"color: rgb(102, 102, 102); font-family: \"Open Sans\", HelveticaNeue, \"Helvetica Neue\", Helvetica, Arial, sans-serif; font-size: 15px;\">We  Smart Construction Company. has commenced the structural remodeling and renovation work of Residential house in D-17 on 5</span><sup style=\"margin: 0px; padding: 0px; border: 0px rgb(225, 225, 225); font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: smaller; line-height: inherit; font-family: \"Open Sans\", HelveticaNeue, \"Helvetica Neue\", Helvetica, Arial, sans-serif; color: rgb(102, 102, 102);\">th</sup><font color=\"#666666\" face=\"Open Sans, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif\"><span style=\"font-size: 15px;\"> July 2017. the scope of work includes the civil works, structure reinforcement, mordernizing of elevation, replacement of complete MEP works and interior renovation. We struggle to achieve the mark what the client is looking for. The project is now near to completion.</span></font><br></p>', 'Waseem Hassan', '', '2017-07-01', '2018-12-22', '', '16,903,040/- Pak Rupees.', 'We are very pleased and proud of our new home from the design to the quality of the workmanship.  The masonry work, the interior trim work and the custom cabinets surpasses anything I have ever seen in any home.  I would highly recommend Smart Construction and Design for anyone considering building a new home.', '1', 'portfolio-7.png', 'portfolio-banner-7.jpg', 'Residential Construction', '', ''),
+(8, 'Mentorships', 'Have your own personal coach to guide you through every step.', '<p><span style=\"color: rgb(28, 30, 33); font-family: Helvetica, Arial, sans-serif; font-size: 14px;\">Phase 1 is thrilled to announce the construction of commercial buildings. These commercial constructions will commence on 1st March 2019 in D17, Islamabad. Development of this phase has already been completed. Just quick facts: 15 residential houses have already been built. 5 to 7 houses currently under construction.</span><br style=\"color: rgb(28, 30, 33); font-family: Helvetica, Arial, sans-serif; font-size: 14px;\"><span style=\"color: rgb(28, 30, 33); font-family: Helvetica, Arial, sans-serif; font-size: 14px;\">This building offers of variety of spaces, with lower ground and ground floor dedicated to spacious commercial shops, 1st floor caters for offices and other </span><span class=\"text_exposed_show\" style=\"display: inline; font-family: Helvetica, Arial, sans-serif; color: rgb(28, 30, 33); font-size: 14px;\">commercial/business purposes . The 2nd and 3rd floors are primarily dedicated to residential apartments and flats to give you living experience that is easily accessible to shops and stores in the building.<br>There is separate excess to all 3 parts of the building to ensure privacy, security and independence.<br>Call now and book your space for a deal, that is a limited time offer. With increasing demand and the continuation of construction the current prices will be revised soon.<br>Don’t miss out on this wonderful deal as it value for money and is one of the fastest upcoming society of Islamabad.</span></p><p>A residential community adjacent to sector D-17 Islamabad, providing high quality standard of living at very economical price. </p><p>Project include</p><p>Margala view residential plots and technologically advance villas.</p>', 'Imran Marwat', 'Smart Group Of Companies ', '2016-03-05', '2019-07-31', 'https://www.smartvillas.com', '', 'Our new lake home has just been completed and we could not be happier with the entire experience and the final product.  Smart Construction and his team have exceeded our expectations.  We were impressed with the regular updates and pictures regarding the progress of the home since we live about four hours away. ', '3', 'portfolio-8.png', 'portfolio-banner-8.jpg', 'web application', 'website development', 'Mentorships.ng is a web-based solution for mentors and the students.');
 
 -- --------------------------------------------------------
 
@@ -454,20 +474,22 @@ INSERT INTO `tbl_portfolio` (`id`, `name`, `short_content`, `content`, `client_n
 -- Table structure for table `tbl_portfolio_category`
 --
 
-CREATE TABLE `tbl_portfolio_category` (
-  `category_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_portfolio_category`;
+CREATE TABLE IF NOT EXISTS `tbl_portfolio_category` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) NOT NULL,
-  `status` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` varchar(30) NOT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_portfolio_category`
 --
 
 INSERT INTO `tbl_portfolio_category` (`category_id`, `category_name`, `status`) VALUES
-(1, 'Corporate', 'Active'),
-(2, 'Business', 'Active'),
-(3, 'Engineering', 'Active');
+(1, 'Web', 'Active'),
+(2, 'Android', 'Active'),
+(3, 'IOS', 'Active');
 
 -- --------------------------------------------------------
 
@@ -475,11 +497,13 @@ INSERT INTO `tbl_portfolio_category` (`category_id`, `category_name`, `status`) 
 -- Table structure for table `tbl_portfolio_photo`
 --
 
-CREATE TABLE `tbl_portfolio_photo` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_portfolio_photo`;
+CREATE TABLE IF NOT EXISTS `tbl_portfolio_photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `portfolio_id` int(11) NOT NULL,
-  `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `photo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_portfolio_photo`
@@ -496,13 +520,7 @@ INSERT INTO `tbl_portfolio_photo` (`id`, `portfolio_id`, `photo`) VALUES
 (24, 8, '24.jpg'),
 (25, 8, '25.jpg'),
 (26, 8, '26.jpg'),
-(27, 8, '27.jpg'),
-(28, 9, '28.jpg'),
-(29, 9, '29.jpg'),
-(30, 9, '30.jpg'),
-(31, 9, '31.jpg'),
-(32, 9, '32.jpg'),
-(33, 9, '33.jpg');
+(27, 8, '27.jpg');
 
 -- --------------------------------------------------------
 
@@ -510,8 +528,9 @@ INSERT INTO `tbl_portfolio_photo` (`id`, `portfolio_id`, `photo`) VALUES
 -- Table structure for table `tbl_service`
 --
 
-CREATE TABLE `tbl_service` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_service`;
+CREATE TABLE IF NOT EXISTS `tbl_service` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `heading` varchar(255) NOT NULL,
   `short_content` text NOT NULL,
   `content` text NOT NULL,
@@ -519,20 +538,18 @@ CREATE TABLE `tbl_service` (
   `banner` varchar(255) NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_keyword` text NOT NULL,
-  `meta_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `meta_description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_service`
 --
 
 INSERT INTO `tbl_service` (`id`, `heading`, `short_content`, `content`, `photo`, `banner`, `meta_title`, `meta_keyword`, `meta_description`) VALUES
-(1, 'ENGINEERING & DESIGN', 'Each project is unique. Some clients need a fast construction schedule. Others must have very low construction costs to meet their ROI.', '<p style=\"font-size: 15px;line-height:25px;\">Each project is unique. Some clients need a fast construction schedule. Others must have very low construction costs to meet their ROI. Some clients require exceptional building construction quality. For every project we oversee, we start by making sure we clearly understand our client’s specific needs and we bring together the best building design and construction team in the industry to meet those needs. We then put our proven construction management approach to work to ensure the success of every project.</p>\r\n	<h2 style=\"font-size: 20px; font-weight: 600; text-transform: uppercase;\">ENGINEERING SERVICES</h2>\r\n	\r\n	<p style=\"font-size: 15px;line-height:25px;\">The building construction industry can be tough. Cost overruns happen. Delays are all too frequent. Quality workmanship is always a concern. Open, honest communication can be hard to find. If you plan to undertake a construction project and you need someone on your side to always look out for YOUR best interests, call Asian House Care today.</p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Our responsibilities when serving as the General Contractor include:</p>\r\n	\r\n	<ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>Topography</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Geological Survey</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Soil Testing</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Architecture</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Structure</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Electrical</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Mechanical</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>Interior Designing</li>\r\n	</ul>', 'service-1.jpg', 'service-banner-1.jpg', 'Engineering & Design', '', ''),
-(2, 'CONSTRUCTION', 'We are building residential, and commercial projects in Rawalpindi & Islamabad. Smart Construction is one of top construction company based in Islamabad.', '<p style=\"font-size: 15px;line-height:25px;\">We are building residential, and commercial projects in Rawalpindi & Islamabad region. Asian House Care (Pvt) Ltd is one of top construction company based in Islamabad. We build homes, multi-storey buildings on Turn-key basis. We used advanced techinques, and tools of construction with innovative ideas.</p>\r\n	<h2 style=\"font-size: 20px; font-weight: 600; text-transform: uppercase;\">CONSTRUCTION SERVICES</h2>\r\n	\r\n	<p style=\"font-size: 15px;line-height:25px;\">We are providing construction services for the homes / houses, apartments, and all other residential and commercial projects in Gulberg Green, Gulberg Residencia, CDA sectors, Defence Housing Authority (DHA), and Bahria Town, and also other prominenet areas of Islamabad, and Rawalpindi.</p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Our responsibilities when serving as the Building Contractor include:</p>\r\n	\r\n	<ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>Residential</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Commercial</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Industrial</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Roads and Bridges</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Land Scaping</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Parks and Play Lands</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Planning and Development</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>Land Scaping</li>\r\n	</ul>', 'service-2.jpg', 'service-banner-2.jpg', 'Construction-Smart Construction', '', ''),
-(3, 'ENERGY EFFICIENT', 'Major Energy projects are complex undertakings, often involving dozens of subcontractors and suppliers, thousands of workers, equipment, and services.', '<p style=\"font-size: 15px;line-height:25px;\">Major Energy projects are complex undertakings, often involving dozens of subcontractors and suppliers, thousands of workers, and millions of dollars in material, equipment, and services. Orchestrating such operations demands first-rate construction management?something We has provided for decades on projects big and small around the world.</p>\r\n	<h2 style=\"font-size: 15px; font-weight: 600; text-transform: uppercase;\">EXPERTISE</h2>\r\n	\r\n	<p>• Managing the bid process and negotiating contracts</p>\r\n<p>• Overseeing management, including field procurement, we well as receipt, inspection, and warehousing, materials, and issuing them to contractors</p>\r\n<p>• Performing construction and field administration</p>\r\n<p>• Commissioning and maintenance of operations</p>\r\n	<h2 style=\"font-size: 20px; font-weight: 600; text-transform: uppercase;\">ENERGY EFFICIENT SERVICES</h2>\r\n	\r\n	<p style=\"font-size: 15px;line-height:25px;\">Energy Efficiency is something we are passionate about and we believe in the benefits of reducing carbon emissions. We work with Rebuilding Together Pakistan and give back to the community. The program mobilizes teams of volunteers to revive neighborhoods by repairing old homes and renovating non-profit schools and facilities. The program reuses available resources and provides these repairs for free to homeowners and communities.</p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Our responsibilities when serving as the Building Contractor include:</p>\r\n	\r\n	<ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>100% Energy Efficient</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Semi – Energy Efficient</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Solar Street Lights</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Houses Solar System</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Solar Residiantial and Commercial</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;  \"></span>Solar Residiantial and Commercial</li>\r\n	</ul>', 'service-3.jpg', 'service-banner-3.jpg', 'ENERGY EFFICIENT', '', ''),
-(4, 'ARCHITECTURE & INTERIOR', 'Our services in architecture/interior design includes the commercial & retail banking projects, financial & investment facilities, corporate interiors', '<p style=\"font-size: 15px;line-height:25px;\">Our services in architecture / interior design includes the commercial and retail banking projects, financial and investment facilities, corporate interiors, data and call centers, seismic and building renovations medical office buildings, shopping centers, residential house projects and as well as landscaping.</p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Smart  Engineering dedicated Interiors / Special Project Department is able to meet the unique requirements of delivering highly-finished project fit-outs in new and existing buildings.</p>\r\n<h2 style=\"font-size: 20px; font-weight: 600; text-transform: uppercase;\">INTERIOR DESIGN</h2>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Our responsibilities when serving as the Building Contractor include:</p>\r\n	<ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>Design Office </li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Design Home</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Design Appartments </li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Design Flat </li>\r\n	</ul>', 'service-4.jpg', 'service-banner-4.jpg', 'ARCHITECTURE & INTERIOR DESIGN', '', ''),
-(5, 'PRE FABRICATION', 'We can work from standard drawings, site measure or full 3D Revit models to fabricate full plant-room installations, this not only offers our client', '<p style=\"font-size: 15px;line-height:25px;\">We can work from standard drawings, site measure or full 3D Revit models to fabricate full plant-room installations, this not only offers our client peace of mind that works are progressing</p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">We fabricate pipework modules for risers and corridors in our workshop for schemes such as hotels and student accommodation, this reduces our time on site and enables us to meet with tight programs as we can begin manufacture before site is ready for install, giving us a head start on demanding or challenging projects. On time, on budget and exceeding our clients quality expectations.</p>\r\n	\r\n	<h2 style=\"font-size: 20px; font-weight: 600; text-transform: uppercase;\">PRE-FABRICATION SERVICES</h2>\r\n	\r\n	<p style=\"font-size: 15px;line-height:25px;\">We have found that the prefabrication service we offer not only offers a time benefit to the construction project, it also offers improved quality due to the controlled environment of our facility.</p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">This includes risk assessments, planned maintenance of plant and equipment, chlorination and treatment of pipework and calorifiers, potable water storage tanks etc.</p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Our responsibilities when serving as the Building Contractor include:</p>\r\n	\r\n	<ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>Office Structure</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Ware House Structure</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Industrial Structure</li>\r\n	</ul>', 'service-5.jpg', 'service-banner-5.jpg', 'PRE FABRICATION', '', ''),
-(6, 'ROADS & HIGHWAYS', 'Smart Construction provides a wide range of value, innovative and quality-driven construction services throughout Pakistan.', '<p style=\"font-size: 15px;line-height:25px;\">Smart Construction  provides a wide range of value, innovative and quality-driven construction services throughout Pakistan. Our core business is road and highway construction including highway structures and maintenance. Schemes undertaken range from major motorway lane to smaller road improvement schemes. </p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Smart Construction  is an improved contractor for the construction of the road all over Pakistan. We also have significant experience in working for the Highways. </p>\r\n	<h2 style=\"font-size: 20px; font-weight: 600; text-transform: uppercase;\">MAIN GATE &amp; ROADS</h2>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Extensive experience in road construction and partnering and has gaining and  excellent reputation for delivering quality services within time and with considerable cost savings through close liaison with all parties under formal or informal partnering frameworks </p>\r\n	<p style=\"font-size: 15px;line-height:25px;\">Our responsibilities when serving as the Building Contractor include:</p>\r\n	\r\n	<ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px; \"></span>Smart Villas Main Gate  </li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Smart Villas Main Double Road</li>\r\n	<li style=\"list-style: none;\"><span class=\"fa fa-check\" style=\"transform: translate(0px, 0px); margin-right: 10px;\"></span>Smart Villas Streets </li>\r\n\r\n	</ul>', 'service-6.jpg', 'service-banner-6.jpg', 'ROADS & HIGHWAYS', '', '');
+(1, 'Web Development', 'To convert designs in a format where humans can see and interact with design elements remotely.', '<p style=\"font-size: 15px;line-height:25px;\">test</p><ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n	</ul>', 'service-1.jpg', 'service-banner-1.jpg', 'Engineering & Design', '', ''),
+(2, 'Mobile Apps', 'We design mobile applications and screens as well as code apps for Android and iOS native platforms', '<p style=\"font-size: 15px;line-height:25px;\">test details&nbsp;</p><ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n	</ul>', 'service-2.jpg', 'service-banner-2.jpg', 'Mobile Apps', 'mobile application', ''),
+(3, 'Website Maintenance', 'We keep your website up-dated with latest technologies and do  diagnostic to check any issues.', '<p style=\"font-size: 15px;line-height:25px;\">test</p><ul style=\"list-style-type: square;  font-weight: inherit; margin: 16px 20px;font-size: 15px;\">\r\n	</ul>', 'service-3.jpg', 'service-banner-3.jpg', 'Website Maintenance', 'Website Maintenance', '');
 
 -- --------------------------------------------------------
 
@@ -540,8 +557,9 @@ INSERT INTO `tbl_service` (`id`, `heading`, `short_content`, `content`, `photo`,
 -- Table structure for table `tbl_settings`
 --
 
-CREATE TABLE `tbl_settings` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_settings`;
+CREATE TABLE IF NOT EXISTS `tbl_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `logo` varchar(255) NOT NULL,
   `logo_admin` varchar(255) NOT NULL,
   `favicon` varchar(255) NOT NULL,
@@ -613,15 +631,16 @@ CREATE TABLE `tbl_settings` (
   `partner_title` varchar(255) NOT NULL,
   `partner_subtitle` varchar(255) NOT NULL,
   `partner_status` varchar(10) NOT NULL,
-  `banner_careers` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `banner_careers` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_settings`
 --
 
 INSERT INTO `tbl_settings` (`id`, `logo`, `logo_admin`, `favicon`, `counter_bg`, `login_bg`, `footer_copyright`, `footer_address`, `footer_phone`, `footer_working_hour`, `footer_address_icon`, `footer_phone_icon`, `footer_working_hour_icon`, `footer_about`, `top_bar_email`, `top_bar_phone`, `contact_map_iframe`, `receive_email`, `reset_password_email_subject`, `total_recent_post`, `total_popular_post`, `total_recent_post_home`, `theme_color_1`, `theme_color_2`, `counter1_text`, `counter1_value`, `counter2_text`, `counter2_value`, `counter3_text`, `counter3_value`, `counter4_text`, `counter4_value`, `counter_status`, `banner_about`, `banner_faq`, `banner_gallery`, `banner_service`, `banner_portfolio`, `banner_testimonial`, `banner_news`, `banner_contact`, `banner_search`, `banner_category`, `banner_terms`, `banner_privacy`, `why_choose_title`, `why_choose_subtitle`, `why_choose_status`, `service_title`, `service_subtitle`, `service_status`, `portfolio_title`, `portfolio_subtitle`, `portfolio_status`, `team_title`, `team_subtitle`, `team_status`, `testimonial_title`, `testimonial_subtitle`, `testimonial_status`, `faq_title`, `faq_subtitle`, `faq_status`, `gallery_title`, `gallery_subtitle`, `gallery_status`, `recent_post_title`, `recent_post_subtitle`, `recent_post_status`, `partner_title`, `partner_subtitle`, `partner_status`, `banner_careers`) VALUES
-(1, 'logo.png', 'logo_admin.png', 'favicon.png', 'counter_bg.jpg', 'login_bg.jpg', 'Copyright © 2019. All Rights Reserved.Design & Developed By AisanIThouse', 'Office#1, Bhatti Rajput Plaza Ghori Town Phase 5', '051-2156473\r\n0345-5119056', 'Monday-Friday (9:00 AM - 5:00 PM)\r\nSaturday and Sunday: Off', 'footer_address_icon.png', 'footer_phone_icon.png', 'footer_working_hour_icon.png', 'If you have any questions about our service, our pricing, or our support, or if you would like some general advice on using text messaging within your organisation, then please do call us, email us, complete the form below, or drop us a note.', 'info@demo.ngsp.pk', '051-2156473', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13290.888628419758!2d73.1284654!3d33.6125128!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc969104f1f879f8e!2sAsian+IT+House!5e0!3m2!1sen!2s!4v1564391482101!5m2!1sen!2s\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', 'wasimbhatti91@gmail.com', 'Password Reset Request - YourWebsite.com', 3, 3, 10, '13233B', 'F8BE2E', 'Working Persons', 150, 'Projects Completed', 1200, 'Happy Clients', 800, 'Awards Achieved', 1200, 'Show', 'banner_about.jpg', 'banner_faq.jpg', 'banner_gallery.jpg', 'banner_service.jpg', 'banner_portfolio.jpg', 'banner_testimonial.jpg', 'banner_news.jpg', 'banner_contact.jpg', 'banner_search.jpg', 'banner_category.jpg', 'banner_terms.jpg', 'banner_privacy.jpg', 'WHY CHOOSE US', 'Armed with the latest and cutting-edge equipment in the construction industry, top infrastructure company Smart Construction has developed a reputation for quality and delivering projects within the agreed time frame and budget requirements.', 'Show', 'SERVICES', 'Top construction company SmartConstruction Services has an unparalleled track record in developing, executing, and managing the most modern and intricate projects in the history of Pakistan.', 'Show', 'PORTFOLIO', 'With over 152 projects our portfolio covers the entire spectrum of construction work. From smart villas phase I to  phase III houses and Malls we have completed works in every corner of Pakistan. Some of our works hold such significance that they have bec', 'Show', 'EXPERIENCED TEAM', 'We\'re an award-winning team that transfers ideas into great construction experience', 'Show', 'WHAT OUR CLIENTS SAY', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit Deserunt libero voluptate', 'Show', 'Have Some Questions?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit Deserunt libero voluptate', 'Hide', 'PHOTO GALLERY', 'Smart Construction  Recent Work ', 'Show', 'BLOG', 'We have undertaken many multi-dimensional projects of international standards with a commitment to people, process, and innovation, we offer our clients extensive knowledge of construction services, including general construction, construction management,', 'Show', 'OUR PARTNERS', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit Deserunt libero voluptate', 'Show', 'banner_careers.jpg');
+(1, 'logo.png', 'logo_admin.png', 'favicon.png', 'counter_bg.jpg', 'login_bg.jpg', 'Copyright © 2020. All Rights Reserved.Design & Developed By TriTechTeal Pvt. Ltd', 'Office#1, Bhatti Rajput Plaza Ghori Town Phase 5', '051-2156473\r\n0345-5119056', 'Monday-Friday (9:00 AM - 5:00 PM)\r\nSaturday and Sunday: Off', 'footer_address_icon.png', 'footer_phone_icon.png', 'footer_working_hour_icon.png', 'If you have any questions about our service, our pricing, or our support, or if you would like some general advice on using text messaging within your organisation, then please do call us, email us, complete the form below, or drop us a note.', 'info@tritechteal.com', '051-2156473', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13290.888628419758!2d73.1284654!3d33.6125128!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc969104f1f879f8e!2sAsian+IT+House!5e0!3m2!1sen!2s!4v1564391482101!5m2!1sen!2s\" width=\"600\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', 'tritechteal@gmail.com', 'Password Reset Request - YourWebsite.com', 3, 3, 10, '13233B', '00A65A', 'Working Persons', 150, 'Projects Completed', 1200, 'Happy Clients', 800, 'Awards Achieved', 1200, 'Show', 'banner_about.jpg', 'banner_faq.jpg', 'banner_gallery.jpg', 'banner_service.jpg', 'banner_portfolio.jpg', 'banner_testimonial.jpg', 'banner_news.jpg', 'banner_contact.jpg', 'banner_search.jpg', 'banner_category.jpg', 'banner_terms.jpg', 'banner_privacy.jpg', 'WHY CHOOSE US', 'Armed with the latest and cutting-edge equipment in the construction industry, top infrastructure company Smart Construction has developed a reputation for quality and delivering projects within the agreed time frame and budget requirements.', 'Hide', 'SERVICES', '', 'Show', 'PORTFOLIO', '', 'Show', 'EXPERIENCED TEAM', 'We\'re an award-winning team that transfers ideas into great construction experience', 'Hide', 'WHAT OUR CLIENTS SAY', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit Deserunt libero voluptate', 'Hide', 'Have Some Questions?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit Deserunt libero voluptate', 'Hide', 'PHOTO GALLERY', 'Smart Construction  Recent Work ', 'Hide', 'BLOG', 'We have undertaken many multi-dimensional projects of international standards with a commitment to people, process, and innovation, we offer our clients extensive knowledge of construction services, including general construction, construction management,', 'Hide', 'OUR PARTNERS', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit Deserunt libero voluptate', 'Hide', 'banner_careers.jpg');
 
 -- --------------------------------------------------------
 
@@ -629,7 +648,8 @@ INSERT INTO `tbl_settings` (`id`, `logo`, `logo_admin`, `favicon`, `counter_bg`,
 -- Table structure for table `tbl_slider`
 --
 
-CREATE TABLE `tbl_slider` (
+DROP TABLE IF EXISTS `tbl_slider`;
+CREATE TABLE IF NOT EXISTS `tbl_slider` (
   `id` int(11) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `heading` varchar(255) NOT NULL,
@@ -645,9 +665,7 @@ CREATE TABLE `tbl_slider` (
 --
 
 INSERT INTO `tbl_slider` (`id`, `photo`, `heading`, `content`, `button1_text`, `button1_url`, `button2_text`, `button2_url`) VALUES
-(1, 'slider-1.jpg', 'YOU DREAM IT, WE BUILD IT', 'At Smart Engineering, we make sure that from architecture design to complete construction client is satisfied by quality of work. Eventually a dream project becomes reality', 'Read More', 'http://demo.ngsp.pk/construction/service/view/2', 'Contact  Us', 'http://demo.ngsp.pk/construction/contact'),
-(2, 'slider-2.jpg', 'PROFESSIONAL TECHNOLOGY', 'When the Professional technology achieves its true mission, it sublimates into art.', 'Read More', 'http://demo.ngsp.pk/construction/service/view/1', 'About Us', 'http://demo.ngsp.pk/construction/about'),
-(3, 'slider-3.jpg', 'A RELIABLE TEAM', 'Our Team is trained with Comprehensive strict quality management and safety control systems. Each member is technically qualified to ensure the safe production, solutions and constant development of the enterprise', 'About us', 'http://demo.ngsp.pk/construction/about', 'Contact us', 'http://demo.ngsp.pk/construction/contact');
+(0, 'slider-0.jpg', 'Custom Product & Software Development Focused On Your Success.', 'Get our professional designers, developers and project management experts to work on your latest idea.', 'Read More', '#', 'Contact  Us', '#');
 
 -- --------------------------------------------------------
 
@@ -655,7 +673,8 @@ INSERT INTO `tbl_slider` (`id`, `photo`, `heading`, `content`, `button1_text`, `
 -- Table structure for table `tbl_social`
 --
 
-CREATE TABLE `tbl_social` (
+DROP TABLE IF EXISTS `tbl_social`;
+CREATE TABLE IF NOT EXISTS `tbl_social` (
   `social_id` int(11) NOT NULL,
   `social_name` varchar(30) NOT NULL,
   `social_url` varchar(255) NOT NULL,
@@ -667,9 +686,25 @@ CREATE TABLE `tbl_social` (
 --
 
 INSERT INTO `tbl_social` (`social_id`, `social_name`, `social_url`, `social_icon`) VALUES
-(1, 'Facebook', '#', 'fa fa-facebook'),
+(1, 'Facebook', 'https://www.facebook.com/tritechteal/', 'fa fa-facebook'),
 (2, 'Twitter', '#', 'fa fa-twitter'),
-(3, 'LinkedIn', '#', 'fa fa-linkedin'),
+(3, 'LinkedIn', 'https://pk.linkedin.com/company/tritechteal', 'fa fa-linkedin'),
+(4, 'Google Plus', '#', 'fa fa-google-plus'),
+(5, 'Pinterest', '#', 'fa fa-pinterest'),
+(6, 'YouTube', '', 'fa fa-youtube'),
+(7, 'Instagram', '', 'fa fa-instagram'),
+(8, 'Tumblr', '', 'fa fa-tumblr'),
+(9, 'Flickr', '', 'fa fa-flickr'),
+(10, 'Reddit', '', 'fa fa-reddit'),
+(11, 'Snapchat', '', 'fa fa-snapchat'),
+(12, 'WhatsApp', '', 'fa fa-whatsapp'),
+(13, 'Quora', '', 'fa fa-quora'),
+(14, 'StumbleUpon', '', 'fa fa-stumbleupon'),
+(15, 'Delicious', '', 'fa fa-delicious'),
+(16, 'Digg', '', 'fa fa-digg'),
+(1, 'Facebook', 'https://www.facebook.com/tritechteal/', 'fa fa-facebook'),
+(2, 'Twitter', '#', 'fa fa-twitter'),
+(3, 'LinkedIn', 'https://pk.linkedin.com/company/tritechteal', 'fa fa-linkedin'),
 (4, 'Google Plus', '#', 'fa fa-google-plus'),
 (5, 'Pinterest', '#', 'fa fa-pinterest'),
 (6, 'YouTube', '', 'fa fa-youtube'),
@@ -690,7 +725,8 @@ INSERT INTO `tbl_social` (`social_id`, `social_name`, `social_url`, `social_icon
 -- Table structure for table `tbl_team_member`
 --
 
-CREATE TABLE `tbl_team_member` (
+DROP TABLE IF EXISTS `tbl_team_member`;
+CREATE TABLE IF NOT EXISTS `tbl_team_member` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `designation_id` int(11) NOT NULL,
@@ -713,6 +749,11 @@ INSERT INTO `tbl_team_member` (`id`, `name`, `designation_id`, `photo`, `faceboo
 (8, 'Umair Zafer', 3, 'team-member-8.jpg', 'https://www.facebook.com/umair.zafar.3950', 'https://twitter.com', 'https://linkedin.com', '', '', '', ''),
 (9, 'Imran Marwat', 1, 'team-member-9.jpg', 'https://www.facebook.com/imran.marwat', 'twitter.com', 'linkedin.com', '', '', '', ''),
 (10, 'Sohail Khan', 4, 'team-member-10.jpg', 'https://www.facebook.com/profile.php?id=100003082966573', 'twitter.com', 'linkedin.com', '', '', '', ''),
+(11, 'Syed Rehan Ali Shah', 6, 'team-member-11.jpg', 'https://www.facebook.com/profile.php?id=100001729246812', 'twitter.com', 'linkedin.com', '', '', '', ''),
+(7, 'waseem hassan', 2, 'team-member-7.jpg', 'https://www.facebook.com/whbhatti.90', 'https://www.twitter.com', '', '', '', '', 'https://flickr.com'),
+(8, 'Umair Zafer', 3, 'team-member-8.jpg', 'https://www.facebook.com/umair.zafar.3950', 'https://twitter.com', 'https://linkedin.com', '', '', '', ''),
+(9, 'Imran Marwat', 1, 'team-member-9.jpg', 'https://www.facebook.com/imran.marwat', 'twitter.com', 'linkedin.com', '', '', '', ''),
+(10, 'Sohail Khan', 4, 'team-member-10.jpg', 'https://www.facebook.com/profile.php?id=100003082966573', 'twitter.com', 'linkedin.com', '', '', '', ''),
 (11, 'Syed Rehan Ali Shah', 6, 'team-member-11.jpg', 'https://www.facebook.com/profile.php?id=100001729246812', 'twitter.com', 'linkedin.com', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -721,7 +762,8 @@ INSERT INTO `tbl_team_member` (`id`, `name`, `designation_id`, `photo`, `faceboo
 -- Table structure for table `tbl_testimonial`
 --
 
-CREATE TABLE `tbl_testimonial` (
+DROP TABLE IF EXISTS `tbl_testimonial`;
+CREATE TABLE IF NOT EXISTS `tbl_testimonial` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `designation` varchar(255) NOT NULL,
@@ -741,7 +783,15 @@ INSERT INTO `tbl_testimonial` (`id`, `name`, `designation`, `company`, `photo`, 
 (3, 'Stefen Carman', 'Chairman', 'GH Group', 'testimonial-3.jpg', 'ur house is absolutely beautiful!!! We are in love with it and the building process with your company was exceptional!!! We can\'t thank you enough for your attention to our project and seeing our vision through to completion. And dealing with all our \"requests\"!', 0),
 (4, 'Gary Brent', 'CFO', 'Xbrains It Solution', 'testimonial-4.jpg', 'Thanks again for another job well done!  You have done both major and minor jobs for us and your work has been Excellent!  Your crew is by far the best we have ever worked with.  We greatly appreciate things being done on time and within budget.  .', 0),
 (5, 'usman', 'top to top', 'Asian It', 'testimonial-5.jpg', 'Top construction company SmartConstruction Services has an unparalleled track record in developing, executing, and managing the most modern and intricate projects in the history of Pakistan.', 0),
-(6, 'Aryan Ali', 'Ceo', 'MAA Group', 'testimonial-6.jpg', 'Smart Construction , we really appreciate all your help and expertise in the changes we made to the design and manufacture of our home. Your guidance helped make our beautiful home not only high quality but something that will be that way for years to come.', 0);
+(6, 'Aryan Ali', 'Ceo', 'MAA Group', 'testimonial-6.jpg', 'Smart Construction , we really appreciate all your help and expertise in the changes we made to the design and manufacture of our home. Your guidance helped make our beautiful home not only high quality but something that will be that way for years to come.', 0),
+(1, 'John Doe', 'Managing Director', 'ABC Inc.', 'testimonial-1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quo illo corporis nemo consectetur nobis maxime porro obcaecati accusamus, veniam impedit. Soluta esse dolorem saepe architecto similique odit quae ut.', 1),
+(2, 'Dadiv Smith', 'CEO', 'SS Multimedia', 'testimonial-2.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit quo illo corporis nemo consectetur nobis maxime porro obcaecati accusamus, veniam impedit. Soluta esse dolorem saepe architecto similique odit quae ut.', 1),
+(3, 'Stefen Carman', 'Chairman', 'GH Group', 'testimonial-3.jpg', 'ur house is absolutely beautiful!!! We are in love with it and the building process with your company was exceptional!!! We can\'t thank you enough for your attention to our project and seeing our vision through to completion. And dealing with all our \"requests\"!', 0),
+(4, 'Gary Brent', 'CFO', 'Xbrains It Solution', 'testimonial-4.jpg', 'Thanks again for another job well done!  You have done both major and minor jobs for us and your work has been Excellent!  Your crew is by far the best we have ever worked with.  We greatly appreciate things being done on time and within budget.  .', 0),
+(5, 'usman', 'top to top', 'Asian It', 'testimonial-5.jpg', 'Top construction company SmartConstruction Services has an unparalleled track record in developing, executing, and managing the most modern and intricate projects in the history of Pakistan.', 0),
+(6, 'Aryan Ali', 'Ceo', 'MAA Group', 'testimonial-6.jpg', 'Smart Construction , we really appreciate all your help and expertise in the changes we made to the design and manufacture of our home. Your guidance helped make our beautiful home not only high quality but something that will be that way for years to come.', 0),
+(0, 'sdads', 'qdsd', 'asadasd', 'testimonial-.png', 'qwewqewqeqweq', 0),
+(0, 'asdsa', 'asdas', 'asdsad', 'testimonial-.png', 'sadsad', 0);
 
 -- --------------------------------------------------------
 
@@ -749,10 +799,12 @@ INSERT INTO `tbl_testimonial` (`id`, `name`, `designation`, `company`, `photo`, 
 -- Table structure for table `tbl_testimonial_photo`
 --
 
-CREATE TABLE `tbl_testimonial_photo` (
-  `id` int(11) NOT NULL,
-  `main_photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `tbl_testimonial_photo`;
+CREATE TABLE IF NOT EXISTS `tbl_testimonial_photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `main_photo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_testimonial_photo`
@@ -767,8 +819,9 @@ INSERT INTO `tbl_testimonial_photo` (`id`, `main_photo`) VALUES
 -- Table structure for table `tbl_user`
 --
 
-CREATE TABLE `tbl_user` (
-  `id` int(10) NOT NULL,
+DROP TABLE IF EXISTS `tbl_user`;
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(100) NOT NULL,
@@ -776,8 +829,9 @@ CREATE TABLE `tbl_user` (
   `photo` varchar(255) NOT NULL,
   `role` varchar(30) NOT NULL,
   `status` varchar(10) NOT NULL,
-  `token` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `token` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
@@ -792,12 +846,14 @@ INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`
 -- Table structure for table `tbl_why_choose`
 --
 
-CREATE TABLE `tbl_why_choose` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_why_choose`;
+CREATE TABLE IF NOT EXISTS `tbl_why_choose` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `photo` varchar(255) NOT NULL,
   `heading` varchar(255) NOT NULL,
-  `content` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `content` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_why_choose`
@@ -815,11 +871,13 @@ INSERT INTO `tbl_why_choose` (`id`, `photo`, `heading`, `content`) VALUES
 -- Table structure for table `tbl_why_choose_photo`
 --
 
-CREATE TABLE `tbl_why_choose_photo` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_why_choose_photo`;
+CREATE TABLE IF NOT EXISTS `tbl_why_choose_photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `main_photo` varchar(255) NOT NULL,
-  `item_bg` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `item_bg` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_why_choose_photo`
@@ -827,314 +885,6 @@ CREATE TABLE `tbl_why_choose_photo` (
 
 INSERT INTO `tbl_why_choose_photo` (`id`, `main_photo`, `item_bg`) VALUES
 (1, 'why-choose-main-photo.jpg', 'why-choose-item-bg.jpg');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `jobs`
---
-ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `savejobs`
---
-ALTER TABLE `savejobs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_comment`
---
-ALTER TABLE `tbl_comment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_designation`
---
-ALTER TABLE `tbl_designation`
-  ADD PRIMARY KEY (`designation_id`);
-
---
--- Indexes for table `tbl_faq`
---
-ALTER TABLE `tbl_faq`
-  ADD PRIMARY KEY (`faq_id`);
-
---
--- Indexes for table `tbl_faq_photo`
---
-ALTER TABLE `tbl_faq_photo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_language`
---
-ALTER TABLE `tbl_language`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_news`
---
-ALTER TABLE `tbl_news`
-  ADD PRIMARY KEY (`news_id`);
-
---
--- Indexes for table `tbl_news_category`
---
-ALTER TABLE `tbl_news_category`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `tbl_page`
---
-ALTER TABLE `tbl_page`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_partner`
---
-ALTER TABLE `tbl_partner`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_photo`
---
-ALTER TABLE `tbl_photo`
-  ADD PRIMARY KEY (`photo_id`);
-
---
--- Indexes for table `tbl_portfolio`
---
-ALTER TABLE `tbl_portfolio`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_portfolio_category`
---
-ALTER TABLE `tbl_portfolio_category`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `tbl_portfolio_photo`
---
-ALTER TABLE `tbl_portfolio_photo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_service`
---
-ALTER TABLE `tbl_service`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_settings`
---
-ALTER TABLE `tbl_settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_slider`
---
-ALTER TABLE `tbl_slider`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_social`
---
-ALTER TABLE `tbl_social`
-  ADD PRIMARY KEY (`social_id`);
-
---
--- Indexes for table `tbl_team_member`
---
-ALTER TABLE `tbl_team_member`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_testimonial`
---
-ALTER TABLE `tbl_testimonial`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_testimonial_photo`
---
-ALTER TABLE `tbl_testimonial_photo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_why_choose`
---
-ALTER TABLE `tbl_why_choose`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_why_choose_photo`
---
-ALTER TABLE `tbl_why_choose_photo`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `jobs`
---
-ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `savejobs`
---
-ALTER TABLE `savejobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT for table `tbl_comment`
---
-ALTER TABLE `tbl_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_designation`
---
-ALTER TABLE `tbl_designation`
-  MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_faq`
---
-ALTER TABLE `tbl_faq`
-  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `tbl_faq_photo`
---
-ALTER TABLE `tbl_faq_photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_language`
---
-ALTER TABLE `tbl_language`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
-
---
--- AUTO_INCREMENT for table `tbl_news`
---
-ALTER TABLE `tbl_news`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `tbl_news_category`
---
-ALTER TABLE `tbl_news_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `tbl_page`
---
-ALTER TABLE `tbl_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_partner`
---
-ALTER TABLE `tbl_partner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `tbl_photo`
---
-ALTER TABLE `tbl_photo`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `tbl_portfolio`
---
-ALTER TABLE `tbl_portfolio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `tbl_portfolio_category`
---
-ALTER TABLE `tbl_portfolio_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_portfolio_photo`
---
-ALTER TABLE `tbl_portfolio_photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT for table `tbl_service`
---
-ALTER TABLE `tbl_service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_settings`
---
-ALTER TABLE `tbl_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_slider`
---
-ALTER TABLE `tbl_slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_social`
---
-ALTER TABLE `tbl_social`
-  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `tbl_team_member`
---
-ALTER TABLE `tbl_team_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `tbl_testimonial`
---
-ALTER TABLE `tbl_testimonial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_testimonial_photo`
---
-ALTER TABLE `tbl_testimonial_photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_why_choose`
---
-ALTER TABLE `tbl_why_choose`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_why_choose_photo`
---
-ALTER TABLE `tbl_why_choose_photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
